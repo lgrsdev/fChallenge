@@ -1,8 +1,12 @@
 package nse.impl;
 
-import nse.BuildingBlock;
+import nse.BuildingBlock.AbstractBuildingBlock;
 
-public class StdinSource extends BuildingBlock<Integer, Integer> {
+public class StdinSource extends AbstractBuildingBlock<Integer, Integer> {
+
+    public StdinSource(AbstractBuildingBlock<Integer, ?> next) {
+        super(next);
+    }
 
     @Override
     protected Integer doProcess(Integer integer) {

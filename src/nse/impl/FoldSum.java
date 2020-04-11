@@ -1,10 +1,14 @@
 package nse.impl;
 
-import nse.BuildingBlock;
+import nse.BuildingBlock.AbstractBuildingBlock;
 
 import java.util.Arrays;
 
-public class FoldSum extends BuildingBlock<int[], Integer > {
+public class FoldSum extends AbstractBuildingBlock<int[], Integer > {
+
+    public FoldSum(AbstractBuildingBlock<Integer, ?> next) {
+        super(next);
+    }
 
     @Override
     protected Integer doProcess(int[] array) {

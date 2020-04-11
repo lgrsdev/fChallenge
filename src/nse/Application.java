@@ -8,24 +8,19 @@ public class Application {
 
     public static void main(String[] args) {
 
+        StdinSource chain =
+                new StdinSource(
+                        new Filter(integer -> (integer > 0),
+                                new FixedEventWindow(2,
+                                        new FoldSum(
+                                                new FixedEventWindow(3,
+                                                        new FoldMedian(
+                                                                new StdoutSink()))))));
+
         Scanner scanner = new Scanner(System.in);
 
-        StdinSource stdinSource                = new StdinSource();
-        Filter filter                          = new Filter(integer -> (integer > 0));
-        FixedEventWindow fixedEventWindow2     = new FixedEventWindow(2);
-        FoldSum foldSum                        = new FoldSum();
-        FixedEventWindow fixedEventWindow3     = new FixedEventWindow(3);
-        FoldMedian foldMedian                  = new FoldMedian();
-
-        stdinSource.setNext(filter);
-        filter.setNext(fixedEventWindow2);
-        fixedEventWindow2.setNext(foldSum);
-        foldSum.setNext(fixedEventWindow3);
-        fixedEventWindow3.setNext(foldMedian);
-        foldMedian.setNext(new StdoutSink());
-
         while (scanner.hasNextInt()) {
-            stdinSource.process(scanner.nextInt());
+            chain.process(scanner.nextInt());
         }
     }
 }

@@ -1,14 +1,15 @@
 package nse.impl;
 
-import nse.BuildingBlock;
+import nse.BuildingBlock.AbstractBuildingBlock;
 
-public class FixedEventWindow extends BuildingBlock<Integer, int[]> {
+public class FixedEventWindow extends AbstractBuildingBlock<Integer, int[]> {
 
     private int size;
     private int index;
     private int[] array;
 
-    public FixedEventWindow(int size) {
+    public FixedEventWindow(int size, AbstractBuildingBlock<int[], ?> next) {
+        super(next);
         this.size = size;
         this.index = 0;
         this.array = new int[size];

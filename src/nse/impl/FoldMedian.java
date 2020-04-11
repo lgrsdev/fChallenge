@@ -1,10 +1,14 @@
 package nse.impl;
 
-import nse.BuildingBlock;
+import nse.BuildingBlock.AbstractBuildingBlock;
 
 import java.util.Arrays;
 
-public class FoldMedian extends BuildingBlock<int[], Integer> {
+public class FoldMedian extends AbstractBuildingBlock<int[], Integer> {
+
+    public FoldMedian(AbstractBuildingBlock<Integer, ?> next) {
+        super(next);
+    }
 
     @Override
     protected Integer doProcess(int[] array) {

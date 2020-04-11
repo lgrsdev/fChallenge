@@ -1,8 +1,12 @@
-package nse;
+package nse.BuildingBlock;
 
-public abstract class BuildingBlock<T, R> {
+public abstract class AbstractBuildingBlock<T, R> {
 
-    private BuildingBlock<R, ?> next;
+    private AbstractBuildingBlock<R, ?> next;
+
+    public AbstractBuildingBlock(AbstractBuildingBlock<R, ?> next) {
+        this.next = next;
+    }
 
     public final void process(T input) {
         if (input == null) {
@@ -15,13 +19,4 @@ public abstract class BuildingBlock<T, R> {
     }
 
     protected abstract R doProcess(T input);
-
-    protected final void setNext(BuildingBlock<R, ?> next) {
-        this.next = next;
-    }
-
-    protected final BuildingBlock<R, ?> getNext() {
-        return this.next;
-    }
-
 }

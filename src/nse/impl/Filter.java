@@ -1,14 +1,15 @@
 package nse.impl;
 
-import nse.BuildingBlock;
+import nse.BuildingBlock.AbstractBuildingBlock;
 
 import java.util.function.Predicate;
 
-public class Filter extends BuildingBlock<Integer, Integer> {
+public class Filter extends AbstractBuildingBlock<Integer, Integer> {
 
     private Predicate<Integer> predicate;
 
-    public Filter(Predicate<Integer> predicate) {
+    public Filter(Predicate<Integer> predicate, AbstractBuildingBlock<Integer, ?> next) {
+        super(next);
         this.predicate = predicate;
     }
 
