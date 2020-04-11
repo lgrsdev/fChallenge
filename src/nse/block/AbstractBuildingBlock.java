@@ -1,4 +1,4 @@
-package nse.BuildingBlock;
+package nse.block;
 
 public abstract class AbstractBuildingBlock<T, R> {
 

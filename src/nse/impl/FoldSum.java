@@ -1,6 +1,6 @@
 package nse.impl;
 
-import nse.BuildingBlock.AbstractBuildingBlock;
+import nse.block.AbstractBuildingBlock;
 
 import java.util.Arrays;
 

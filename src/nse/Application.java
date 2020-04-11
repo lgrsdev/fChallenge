@@ -14,7 +14,7 @@ public class Application {
                                 new FixedEventWindow(2,
                                         new FoldSum(
                                                 new FixedEventWindow(3,
-                                                        new FoldMedian(
+                                                        new FoldSum(
                                                                 new StdoutSink()))))));
 
         Scanner scanner = new Scanner(System.in);
